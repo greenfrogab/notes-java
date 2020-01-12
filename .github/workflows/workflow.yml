@@ -24,7 +24,7 @@ jobs:
         run: docker images
 
       - name: Checking docker version
-        run: docker build -t greenfrog/notes-java:latest .
+        run: docker build -t greenfrogab/notes-java:latest .
 
       - name: List Docker images
         run: docker images
