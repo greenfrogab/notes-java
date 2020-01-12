@@ -1,0 +1,31 @@
+version: "3"
+
+services:
+  notes-java-backend:
+    container_name: notes-java-backend
+    image: greenfrogab/notes-java:latest
+    environment:
+      - server.port=4000
+      - spring.data.mongodb.port=27017
+      - spring.data.mongodb.host=notes-mongodb
+      - spring.data.mongodb.database=notes
+    depends_on:
+      - notes-mongodb
+    links:
+      - "notes-mongodb:notes-mongodb"
+    ports:
+      - "4000:4000"
+    networks:
+      - notes-network
+
+  notes-mongodb:
+    container_name: notes-mongodb
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    networks:
+      - notes-network
+
+networks:
+  notes-network:
+    driver: bridge
