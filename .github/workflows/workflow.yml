@@ -20,9 +20,6 @@ jobs:
 
       - uses: docker://docker:latest
 
-      - name: List Docker images
-        run: docker images
-
       - name: Checking docker version
         run: docker build -t greenfrogab/notes-java:latest .
 
