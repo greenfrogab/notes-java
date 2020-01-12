@@ -26,5 +26,12 @@ jobs:
       - name: Checking docker version
         run: docker build -t greenfrogab/notes-java:latest .
 
-      - name: List Docker images
+      - name: Login to Docker Hub
         run: docker login -u ${{secrets.DOCKER_HUB_USERNAME}} -p ${{secrets.DOCKER_HUB_PASSWORD}}
+
+      - name: Push image to docker hub
+        run: docker push greenfrogab/notes-java:latest
+
+      - name: Logout from Docker Hub
+        run: docker logout
+
