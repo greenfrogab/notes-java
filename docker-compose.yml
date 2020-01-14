@@ -7,25 +7,23 @@ services:
     environment:
       - server.port=4000
       - spring.data.mongodb.port=27017
-      - spring.data.mongodb.host=notes-mongodb
+      - spring.data.mongodb.host=notes-java-mongodb
       - spring.data.mongodb.database=notes
     depends_on:
-      - notes-mongodb
+      - notes-java-mongodb
     links:
-      - "notes-mongodb:notes-mongodb"
+      - "notes-java-mongodb:notes-java-mongodb"
     ports:
       - "4000:4000"
     networks:
-      - notes-network
+      - notes-java-network
 
-  notes-mongodb:
-    container_name: notes-mongodb
+  notes-java-mongodb:
+    container_name: notes-java-mongodb
     image: mongo:latest
-    ports:
-      - "27017:27017"
     networks:
-      - notes-network
+      - notes-java-network
 
 networks:
-  notes-network:
+  notes-java-network:
     driver: bridge
